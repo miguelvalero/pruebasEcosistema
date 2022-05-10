@@ -1,0 +1,17 @@
+1651569674727	geckodriver	INFO	Listening on 127.0.0.1:56589
+1651569677746	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "D:\\Users\\usuario\\AppData\\Local\\Temp\\rust_mozprofileNwrefX"
+1651569678271	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at D:\\Users\\usuario\\AppData\\Local\\Temp\\rust_mozprofileNwrefX\\search.json.mozlz4", (void 0)))
+1651569680073	Marionette	INFO	Listening on port 56687
+Read port: 56687
+1651569680107	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1651569682448	Marionette	INFO	Stopped listening on port 56687
+JavaScript error: , line 0: OperationError: Could not move temporary file(D:\Users\usuario\AppData\Local\Temp\rust_mozprofileNwrefX\sessionCheckpoints.json.tmp) to destination(D:\Users\usuario\AppData\Local\Temp\rust_mozprofileNwrefX\sessionCheckpoints.json)
+WARNING: A blocker encountered an error while we were waiting.
+          Blocker:  CrashMonitor: Writing notifications to file after receiving profile-before-change and awaiting all checkpoints written
+          Phase: IOUtils: waiting for profileBeforeChange IO to complete
+          State: {"profile-after-change":true,"final-ui-startup":true,"sessionstore-windows-restored":true,"quit-application-granted":true,"quit-application":true,"sessionstore-final-state-write-complete":true,"profile-change-net-teardown":true,"profile-change-teardown":true,"profile-before-change":true}
+WARNING: OperationError: Could not move temporary file(D:\Users\usuario\AppData\Local\Temp\rust_mozprofileNwrefX\sessionCheckpoints.json.tmp) to destination(D:\Users\usuario\AppData\Local\Temp\rust_mozprofileNwrefX\sessionCheckpoints.json)
+WARNING: observe@resource://gre/modules/AsyncShutdown.jsm:575:16
+
+JavaScript error: resource://gre/modules/AsyncShutdown.jsm, line 575: OperationError: Could not move temporary file(D:\Users\usuario\AppData\Local\Temp\rust_mozprofileNwrefX\sessionCheckpoints.json.tmp) to destination(D:\Users\usuario\AppData\Local\Temp\rust_mozprofileNwrefX\sessionCheckpoints.json)

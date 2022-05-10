@@ -16,7 +16,7 @@ from functools import partial
 import base64
 import numpy as np
 import paho.mqtt.client as mqtt
-import cv2
+#import cv2
 from kivy.graphics.texture import Texture
 
 Builder.load_string("""
@@ -247,7 +247,7 @@ class ConnectWidget(BoxLayout):
 
     def __init__(self, **kwargs):
         super(ConnectWidget, self).__init__(**kwargs)
-        self.client = mqtt.Client('Dashboard')
+        self.client = mqtt.Client('App')
         self.global_broker_address = "127.0.0.1"
         self.global_broker_port = 1884
 
@@ -306,13 +306,13 @@ class ConnectWidget(BoxLayout):
         npimg = np.frombuffer(img, dtype=np.uint8)
         if npimg.size != 0:
             # converting into numpy array from buffer
-            self.frame = cv2.imdecode(npimg, 1)
-            buffer = cv2.flip(self.frame, 0).tobytes()
+            #self.frame = cv2.imdecode(npimg, 1)
+            #buffer = cv2.flip(self.frame, 0).tobytes()
             shape1 = self.frame.shape[1]
             shape0 = self.frame.shape[0]
 
             tex = Texture.create(size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
-            tex.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
+            #tex.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
             self.parent.ids.buttons.pictureImage.texture = tex
 
     def showVideoFrame(self, client, userdata, msg, dt):
@@ -323,10 +323,10 @@ class ConnectWidget(BoxLayout):
         if npimg.size != 0:
             # converting into numpy array from buffer
 
-            self.frame = cv2.imdecode(npimg, 1)
-            buffer = cv2.flip(self.frame, 0).tobytes()
+            #self.frame = cv2.imdecode(npimg, 1)
+            #buffer = cv2.flip(self.frame, 0).tobytes()
             tex = Texture.create(size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
-            tex.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
+            #tex.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
 
             self.parent.ids.buttons.videoFrameImage.texture = tex
 

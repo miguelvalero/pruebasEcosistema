@@ -1,0 +1,5 @@
+#B7BBB6 grey
+#375E97 sky
+#FB6542 sunset
+#FFBB00 sunflower
+#3F681C grass

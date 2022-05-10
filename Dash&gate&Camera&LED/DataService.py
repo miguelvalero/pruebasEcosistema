@@ -7,10 +7,13 @@ import time
 import threading
 import requests
 
+#global_broker_address ="127.0.0.1"
+#global_broker_port = 1884
 
 
-global_broker_address =  "127.0.0.1"
+global_broker_address =  "classpip.upc.edu"
 global_broker_port = 1884
+
 API_URL = "http://localhost:4000/data"
 
 

@@ -1,9 +1,14 @@
 
 import paho.mqtt.client as mqtt
+import ssl
 
 
-global_broker_address =  "127.0.0.1"
+#global_broker_address =  "127.0.0.1"
+#global_broker_port = 1884
+
+global_broker_address ="classpip.upc.edu"
 global_broker_port = 1884
+
 local_broker_address =  "127.0.0.1"
 local_broker_port = 1883
 sendingVideoStream = False
@@ -17,6 +22,7 @@ def on_local_message(client, userdata, message):
 def on_global_message(client, userdata, message):
     global sendingVideoStream
     global local_client
+    print ('recibo mensaje')
     if message.topic == 'connectPlatform':
         # subscribe to commands from DASH
         global_client.subscribe('LEDsControllerCommand/+')
@@ -41,6 +47,9 @@ def on_global_message(client, userdata, message):
 
 global_client = mqtt.Client("Gate")
 global_client.on_message = on_global_message
+global_client.username_pw_set(username='ecosystem', password='eco1342.')
+#global_client.tls_set("client.crt", tls_version=ssl.PROTOCOL_TLSv1_2)
+#global_client.tls_set("ca.crt", "client.crt", "client.key", tls_version=ssl.PROTOCOL_TLSv1_2)
 global_client.connect(global_broker_address, global_broker_port)
 
 

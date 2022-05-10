@@ -35,14 +35,22 @@ def on_message(client, userdata, message):
         client.subscribe('cameraControllerCommand/+')
     if message.topic == 'cameraControllerCommand/takePicture':
         print('Take picture')
+        faceCascade = cv.CascadeClassifier(cv.data.haarcascades + 'haarcascade_frontalface_default.xml')
         cap = cv.VideoCapture(0)  # video capture source camera (Here webcam of laptop)
         for n in range(10):
             # this loop is required to discard first frames
             ret, frame = cap.read()
-            _, buffer = cv.imencode('.jpg', frame)
-            # Converting into encoded bytes
-            jpg_as_text = base64.b64encode(buffer)
-            client.publish('cameraControllerAnswer/picture', jpg_as_text)
+
+
+        imgGray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+        faces = faceCascade.detectMultiScale(imgGray, 1.1, 4)
+
+        for (x, y, w, h) in faces:
+            cv.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)
+        # Converting into encoded bytes
+        _, buffer = cv.imencode('.jpg', frame)
+        jpg_as_text = base64.b64encode(buffer)
+        client.publish('cameraControllerAnswer/picture', jpg_as_text)
 
     if message.topic == 'cameraControllerCommand/startVideoStream':
         sendingVideoStream = True
